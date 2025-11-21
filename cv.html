@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV – Federico Gabriel Hernández Pintos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Fondo y vidrio (tomado del diseño original) */
+      --bg-deep: #030407;
+      --bg-grad-1: #0a0f1d;
+      --bg-grad-2: #020205;
+
+      --glass-surface: rgba(15, 23, 42, 0.9);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-highlight: rgba(255, 255, 255, 0.03);
+      --glass-blur: 18px;
+
+      /* Acentos */
+      --accent-tech: #3b82f6;
+      --accent-human: #f59e0b;
+      --accent-core: #8b5cf6;
+
+      /* Texto */
+      --text-main: #f1f5f9;
+      --text-soft: #cbd5f5;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      /* Estructura */
+      --nav-h: 70px;
+      --radius-xl: 26px;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-deep);
+      background-image:
+        radial-gradient(circle at 15% 0%, rgba(59,130,246,0.18) 0, transparent 45%),
+        radial-gradient(circle at 85% 10%, rgba(139,92,246,0.18) 0, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(245,158,11,0.12) 0, transparent 55%),
+        linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2));
+      padding-top: calc(var(--nav-h) + 24px);
+      padding-bottom: 48px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .section-title, .nav-title, .hero-role {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* CONTENEDOR GENERAL */
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    /* VIDRIO */
+    .glass-panel {
+      background: var(--glass-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-inner {
+      padding: 24px 26px;
+    }
+
+    .glass-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), transparent 40%);
+      mix-blend-mode: soft-light;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(255,255,255,0.14);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.75);
+    }
+
+    /* NAV SUPERIOR */
+    .top-nav {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .nav-bar {
+      pointer-events: auto;
+      max-width: 1120px;
+      width: 100%;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(10,12,20,0.94);
+      border: 1px solid rgba(148,163,184,0.45);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.55);
+      background: radial-gradient(circle at 0 0, rgba(30,64,175,0.7), rgba(15,23,42,0.95));
+      color: var(--text-soft);
+      font-size: 0.74rem;
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(148,163,184,0.8);
+    }
+
+    .nav-btn.active {
+      border-color: var(--accent-core);
+      color: #e5e7eb;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.6);
+    }
+
+    .nav-btn[data-target="perfil"] .nav-dot {
+      background: var(--accent-human);
+      box-shadow: 0 0 0 4px rgba(245,158,11,0.35);
+    }
+
+    .nav-btn:hover {
+      border-color: var(--accent-core);
+      transform: translateY(-1px);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 12px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .profile-card {
+      padding-bottom: 18px;
+    }
+
+    .profile-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .avatar-frame {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 26px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--accent-core), var(--accent-human));
+      box-shadow: 0 18px 34px rgba(0,0,0,0.85);
+    }
+
+    .avatar-inner {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #020617;
+    }
+
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.04) saturate(1.05);
+    }
+
+    .profile-name {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .profile-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .sidebar-section {
+      padding-top: 14px;
+      border-top: 1px dashed rgba(148,163,184,0.4);
+    }
+
+    .sidebar-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 6px;
+      font-size: 0.84rem;
+    }
+
+    .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .value {
+      color: var(--text-soft);
+      margin-top: 1px;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.95);
+      font-size: 0.74rem;
+      color: var(--text-soft);
+    }
+
+    .chip--accent {
+      border-color: rgba(139,92,246,0.7);
+      color: var(--accent-human);
+    }
+
+    .skill-group {
+      margin-bottom: 10px;
+    }
+
+    .skill-label {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .skill-bar {
+      position: relative;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.98);
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.5);
+    }
+
+    .skill-bar span {
+      position: absolute;
+      inset: 0;
+      transform-origin: left center;
+      background: linear-gradient(90deg, var(--accent-core), var(--accent-human));
+    }
+
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    /* SECCIONES PRINCIPALES */
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 14px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-core), transparent);
+    }
+
+    .section-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .section-body p {
+      margin: 6px 0;
+      font-size: 0.94rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .highlight {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .highlight strong {
+      color: var(--accent-human);
+    }
+
+    /* HERO / PERFIL */
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(139,92,246,0.7);
+      background: linear-gradient(90deg, rgba(15,23,42,0.95), rgba(30,64,175,0.7));
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-human);
+      box-shadow: 0 0 0 6px rgba(245,158,11,0.32);
+    }
+
+    .hero-name {
+      font-size: clamp(2.1rem, 3.2vw, 2.4rem);
+      margin: 0 0 6px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-role {
+      font-size: 1.02rem;
+      color: var(--accent-human);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .pill-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.98);
+      font-size: 0.74rem;
+      color: var(--text-soft);
+      white-space: nowrap;
+    }
+
+    .pill--accent {
+      border-color: rgba(139,92,246,0.85);
+      background: radial-gradient(circle at 0 0, rgba(139,92,246,0.5), rgba(15,23,42,0.98));
+      color: var(--accent-human);
+    }
+
+    /* TERMINOS CON TOOLTIP */
+    .term {
+      position: relative;
+      border-bottom: 1px dotted rgba(139,92,246,0.7);
+      cursor: help;
+    }
+
+    .term::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 0;
+      top: calc(100% + 6px);
+      min-width: 180px;
+      max-width: 260px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid rgba(148,163,184,0.7);
+      color: var(--text-soft);
+      font-size: 0.74rem;
+      line-height: 1.3;
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.8);
+      z-index: 20;
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+    }
+
+
+    .term:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MAPA HÍBRIDO */
+    .hybrid-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    .hybrid-list {
+      margin-top: 6px;
+      display: grid;
+      gap: 4px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .hybrid-list strong {
+      color: var(--accent-human);
+    }
+
+    .radar-wrapper {
+      justify-self: center;
+    }
+
+    .radar-card {
+      width: 220px;
+      height: 220px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 0 0, rgba(59,130,246,0.6), rgba(15,23,42,0.98));
+      border: 1px solid rgba(148,163,184,0.8);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.85);
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+    }
+
+    .radar-card:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.9);
+    }
+
+    .radar-card::after {
+      content: "click para ampliar";
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(226,232,240,0.7);
+    }
+
+    .radar-card svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .radar-level {
+      fill: none;
+      stroke: rgba(148,163,184,0.4);
+      stroke-width: 0.8;
+    }
+
+    .radar-axis {
+      stroke: rgba(156,163,175,0.6);
+      stroke-width: 0.6;
+    }
+
+    .radar-shape {
+      fill: rgba(139,92,246,0.25);
+      stroke: var(--accent-human);
+      stroke-width: 1.6;
+    }
+
+    .radar-label {
+      font-size: 8px;
+      fill: #e5e7eb;
+    }
+
+    /* MODAL RADAR */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-out;
+      z-index: 80;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: min(520px, 92vw);
+      border-radius: 26px;
+      background: radial-gradient(circle at 0 0, rgba(59,130,246,0.8), rgba(15,23,42,0.98));
+      border: 1px solid rgba(148,163,184,0.95);
+      box-shadow: 0 36px 90px rgba(0,0,0,0.9);
+      padding: 18px 20px 20px;
+      color: var(--text-main);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(226,232,240,0.8);
+      background: rgba(15,23,42,0.98);
+      color: #e5e7eb;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-title {
+      font-size: 0.86rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+    }
+
+    .modal-body p {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    /* EXPERIENCIA: TIMELINE */
+    .timeline {
+      margin-top: 10px;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 4px;
+      bottom: 4px;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(148,163,184,0.8), transparent);
+    }
+
+    .job {
+      position: relative;
+      padding: 10px 0 6px 30px;
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 20px;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-human), var(--accent-core));
+      box-shadow: 0 0 0 4px rgba(139,92,246,0.3);
+    }
+
+    .job-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px;
+      align-items: baseline;
+    }
+
+    .job-toggle {
+      border: none;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .job-title-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .job-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #f9fafb;
+    }
+
+    .job-company {
+      font-size: 0.9rem;
+      color: var(--accent-core);
+    }
+
+    .job-meta {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .job-chevron {
+      width: 9px;
+      height: 9px;
+      border-right: 1px solid var(--text-muted);
+      border-bottom: 1px solid var(--text-muted);
+      transform: rotate(45deg);
+      transition: transform 0.16s ease-out;
+    }
+
+    .job[data-collapsed="true"] .job-chevron {
+      transform: rotate(-45deg);
+    }
+
+    .job-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 4px 0 4px;
+    }
+
+    .job-tag {
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.98);
+      font-size: 0.74rem;
+      color: var(--text-soft);
+    }
+
+    .job-details {
+      max-height: 700px;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out, opacity 0.18s ease-out;
+    }
+
+    .job[data-collapsed="true"] .job-details {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .job-details ul {
+      margin: 4px 0 0;
+      padding-left: 18px;
+    }
+
+    .job-details li {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    /* FORMACIÓN */
+    .edu-grid {
+      display: grid;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .edu-item-title {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .edu-inst {
+      font-size: 0.86rem;
+      color: var(--accent-core);
+    }
+
+    .edu-meta {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .course-list {
+      margin-top: 6px;
+      display: grid;
+      gap: 4px;
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    /* IA & AUTOAPRENDIZAJE */
+    .ia-section {
+      border-color: rgba(139,92,246,0.5);
+      background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.96), rgba(15,23,42,0.98));
+    }
+
+    .ia-section .section-title {
+      color: var(--accent-core);
+    }
+
+    .ia-section ul {
+      margin-top: 6px;
+      padding-left: 18px;
+    }
+
+    .ia-section li {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      body {
+        padding-top: calc(var(--nav-h) + 18px);
+      }
+      .nav-title { display: none; }
+      .page { padding: 0 14px; }
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .sidebar {
+        position: static;
+        order: 2;
+      }
+      .main {
+        order: 1;
+      }
+      .hybrid-grid,
+      .modal-body {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #111827;
+        padding: 0;
+      }
+      .top-nav,
+      .modal-backdrop {
+        display: none;
+      }
+      .page {
+        padding: 0;
+      }
+      .glass-panel {
+        border-radius: 0;
+        box-shadow: none;
+        background: #ffffff;
+        backdrop-filter: none;
+      }
+      .glass-inner {
+        padding: 14px 18px;
+      }
+      .sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV SUPERIOR -->
+  <nav class="top-nav">
+    <div class="nav-bar">
+      <div class="nav-title">Mapa profesional · Federico G. Hernández Pintos</div>
+      <div class="nav-links">
+        <button class="nav-btn active" data-target="perfil">
+          <span class="nav-dot"></span><span>Perfil</span>
+        </button>
+        <button class="nav-btn" data-target="habilidades">
+          <span class="nav-dot"></span><span>Habilidades</span>
+        </button>
+        <button class="nav-btn" data-target="experiencia">
+          <span class="nav-dot"></span><span>Experiencia</span>
+        </button>
+        <button class="nav-btn" data-target="formacion">
+          <span class="nav-dot"></span><span>Formación</span>
+        </button>
+        <button class="nav-btn" data-target="ia">
+          <span class="nav-dot"></span><span>IA &amp; Autoaprendizaje</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="grid">
+
+      <!-- COLUMNA IZQUIERDA -->
+      <aside class="sidebar" aria-label="Información lateral">
+        <section class="glass-panel profile-card">
+          <div class="glass-inner profile-inner">
+            <div class="profile-top">
+              <div class="avatar-frame">
+                <div class="avatar-inner">
+                  <img src="foto cv.png" alt="Foto de perfil de Federico Gabriel Hernández Pintos">
+                </div>
+              </div>
+              <div>
+                <div class="profile-role">Docente &amp; Desarrollador · Ciencia, sistemas e IA aplicada</div>
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <div class="sidebar-title">Contacto</div>
+              <div class="info-grid">
+                <div>
+                  <div class="label">Ubicación</div>
+                  <div class="value">San Miguel, Buenos Aires, Argentina</div>
+                </div>
+                <div>
+                  <div class="label">Teléfono</div>
+                  <div class="value">+54 11 5953-7098 · +54 11 5544-5519</div>
+                </div>
+                <div>
+                  <div class="label">Email</div>
+                  <div class="value">hernandez.pintos@zohomail.com</div>
+                </div>
+                <div>
+                  <div class="label">LinkedIn</div>
+                  <div class="value">linkedin.com/in/fghp</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <div class="sidebar-title">Áreas fuertes</div>
+              <div class="chip-list">
+                <span class="chip chip--accent">Automatización de procesos</span>
+                <span class="chip chip--accent">Docencia tecnológica</span>
+                <span class="chip">Modelado de sistemas</span>
+                <span class="chip">Infraestructura &amp; soporte</span>
+                <span class="chip">IA generativa aplicada</span>
+                <span class="chip">Diseño técnico (AutoCAD)</span>
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <div class="sidebar-title">Stack técnico</div>
+
+              <div class="skill-group">
+                <div class="skill-label">Python · FastAPI · Flet</div>
+                <div class="skill-bar"><span style="transform: scaleX(0.92);"></span></div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-label">PostgreSQL · Access · Modelado de datos</div>
+                <div class="skill-bar"><span style="transform: scaleX(0.9);"></span></div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-label">Excel / Ofimática avanzada</div>
+                <div class="skill-bar"><span style="transform: scaleX(0.9);"></span></div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-label">AutoCAD · Dibujo técnico</div>
+                <div class="skill-bar"><span style="transform: scaleX(0.86);"></span></div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-label">Infraestructura · Ubuntu Server · VPN</div>
+                <div class="skill-bar"><span style="transform: scaleX(0.88);"></span></div>
+              </div>
+
+              <div class="skill-group">
+                <div class="skill-label">HTML · CSS · Frontend</div>
+                <div class="skill-bar"><span style="transform: scaleX(0.78);"></span></div>
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <div class="sidebar-title">Idiomas</div>
+              <div class="lang-row">
+                <span>Español</span><span>· Nativo</span>
+              </div>
+              <div class="lang-row">
+                <span>Inglés técnico</span><span>· Lectura / recursos IT</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <!-- COLUMNA DERECHA -->
+      <main class="main">
+        <!-- PERFIL -->
+        <section id="perfil" class="glass-panel">
+          <div class="glass-inner section-body">
+            <div class="hero-tag">
+              <span class="hero-dot"></span>
+              <span>Docente · Desarrollador full-stack · IA aplicada</span>
+            </div>
+            <h1 class="hero-name">Federico Gabriel Hernández Pintos</h1>
+            <div class="hero-role">Uniendo negocio, tecnología, ciencia e IA</div>
+
+            <p>
+              Soy <strong>docente y desarrollador full-stack</strong> con base en Electrónica y Física,
+              con más de 20 años enseñando Ciencia, Tecnología y programación a personas de distintas edades.
+            </p>
+            <p>
+              Diseño e implemento soluciones en <strong>Python</strong> que conectan
+              <span class="term" data-tooltip="APIs, lógica de negocios, SQLAlchemy, validación de datos y seguridad básica.">backend</span>,
+              <span class="term" data-tooltip="Interfaces en Flet y HTML/CSS, enfocadas en claridad para personas no técnicas.">frontend</span>,
+              <span class="term" data-tooltip="PostgreSQL y Access: esquemas, claves, índices y consultas optimizadas para uso diario.">bases de datos</span>
+              y procesos administrativos reales, desplegadas en
+              <span class="term" data-tooltip="Instalación, servicios systemd, respaldos básicos y acceso remoto controlado.">servidores Ubuntu Server</span>
+              accesibles por VPN.
+            </p>
+            <p>
+              Integro de forma sistemática un ecosistema de
+              <span class="term" data-tooltip="ChatGPT, Gemini, DeepSeek, Perplexity, Qwen, NotebookLM, entre otras, usadas como 'equipo de especialistas' para comparar enfoques y refinar soluciones."><strong>IA generativa</strong></span>
+              (ChatGPT, Gemini, DeepSeek, Perplexity, Qwen, NotebookLM, etc.) como
+              <strong>consejo técnico</strong>: contrasto respuestas, detecto sesgos y convierto esas ideas en código,
+              modelos de datos y materiales didácticos que funcionan en el mundo real.
+            </p>
+            <p>
+              Busco contextos donde mi perfil híbrido una <strong>negocio, tecnología, IA y enseñanza</strong>,
+              aportando valor tanto en el diseño de sistemas como en la experiencia de quienes los usan y aprenden.
+            </p>
+
+            <div class="pill-row">
+              <span class="pill pill--accent">Sistemas en Python (FastAPI, Flet, SQLAlchemy)</span>
+              <span class="pill">PostgreSQL / Access y modelos de datos</span>
+              <span class="pill">IA generativa como copiloto y consejo</span>
+              <span class="pill">Cursos de ciencia, programación e IA aplicada</span>
+            </div>
+
+            <div class="highlight">
+              <strong>Cómo trabajo:</strong>
+              entender el sistema completo, automatizar lo repetitivo, documentar lo esencial
+              y acompañar a las personas para que el cambio no dependa solo de mí.
+            </div>
+          </div>
+        </section>
+
+        <!-- MAPA HÍBRIDO -->
+        <section id="habilidades" class="glass-panel">
+          <div class="glass-inner">
+            <div class="section-title">Mapa de habilidades híbridas</div>
+            <div class="section-subtitle">Equilibrio entre desarrollo, procesos, docencia, infraestructura e IA</div>
+
+            <div class="section-body hybrid-grid">
+              <div>
+                <p>
+                  Mi trabajo combina tres ejes principales:
+                  <strong>automatización de procesos</strong>,
+                  <strong>docencia tecnológica</strong> e
+                  <span class="term" data-tooltip="Uso la IA para analizar, explorar variantes y documentar decisiones técnicas sin delegar el criterio humano."><strong>IA aplicada</strong></span>,
+                  apoyados por una base sólida en hardware, redes, bases de datos y diseño técnico.
+                </p>
+                <div class="hybrid-list">
+                  <div>
+                    <strong>Desarrollo y automatización:</strong>
+                    sistemas internos en Python, FastAPI y Flet, integrados a PostgreSQL/Access y Excel.
+                  </div>
+                  <div>
+                    <strong>Gestión y operaciones:</strong>
+                    años de experiencia en costos, presupuestos, licitaciones, compras y facturación,
+                    conectando la lógica del negocio con el código.
+                  </div>
+                  <div>
+                    <strong>Docencia y divulgación:</strong>
+                    enseñanza formal de ciencia, informática e IA aplicada; diseño de materiales claros
+                    para que las personas entiendan lo que usan.
+                  </div>
+                  <div>
+                    <strong>Diseño técnico:</strong>
+                    dibujo técnico con AutoCAD y producción de material preciso para obra y oficina técnica.
+                  </div>
+                  <div>
+                    <strong>Infraestructura y soporte:</strong>
+                    servidores Ubuntu, redes, VPN y mantenimiento de PC utilizados a diario por usuarios no técnicos.
+                  </div>
+                </div>
+              </div>
+
+              <div class="radar-wrapper">
+                <button class="radar-card" id="radar-trigger" type="button" aria-label="Ampliar gráfico de habilidades híbridas">
+                  <svg viewBox="0 0 240 240" aria-hidden="true">
+                    <!-- niveles -->
+                    <polygon class="radar-level"
+                      points="120,96 142.8,112.6 134.1,139.4 105.9,139.4 97.2,112.6" />
+                    <polygon class="radar-level"
+                      points="120,72 165.7,105.2 148.2,158.8 91.8,158.8 74.3,105.2" />
+                    <polygon class="radar-level"
+                      points="120,48 188.5,97.8 162.3,178.2 77.7,178.2 51.5,97.8" />
+                    <!-- ejes -->
+                    <line class="radar-axis" x1="120" y1="120" x2="120" y2="40" />
+                    <line class="radar-axis" x1="120" y1="120" x2="196.1" y2="95.3" />
+                    <line class="radar-axis" x1="120" y1="120" x2="167" y2="184.7" />
+                    <line class="radar-axis" x1="120" y1="120" x2="73" y2="184.7" />
+                    <line class="radar-axis" x1="120" y1="120" x2="43.9" y2="95.3" />
+                    <!-- perfil -->
+                    <polygon class="radar-shape"
+                      points="120,44 184.7,99 164.7,181.5 82.4,171.8 51.5,97.8" />
+                    <!-- etiquetas -->
+                    <text class="radar-label" x="120" y="28" text-anchor="middle">Dev &amp; Automación</text>
+                    <text class="radar-label" x="207.5" y="92" text-anchor="start">Gestión</text>
+                    <text class="radar-label" x="174.1" y="194" text-anchor="middle">Docencia</text>
+                    <text class="radar-label" x="65.9" y="194" text-anchor="middle">Diseño técnico</text>
+                    <text class="radar-label" x="32.5" y="92" text-anchor="end">Infra &amp; soporte</text>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCIA -->
+        <section id="experiencia" class="glass-panel">
+          <div class="glass-inner">
+            <div class="section-title">Experiencia profesional</div>
+            <div class="section-subtitle">Hacé clic en cada rol para ver el detalle</div>
+
+            <div class="timeline">
+
+              <article class="job" data-job data-collapsed="false">
+                <div class="job-header">
+                  <button class="job-toggle" type="button">
+                    <div class="job-title-row">
+                      <span class="job-chevron"></span>
+                      <span class="job-title">Asesor Técnico – Automatización y Soporte</span>
+                    </div>
+                    <div class="job-company">Cristales Mitre S.A. · Industria del vidrio automotor</div>
+                  </button>
+                  <div class="job-meta">Nov 2022 – Actual · Modalidad híbrida</div>
+                </div>
+                <div class="job-tags">
+                  <span class="job-tag">Python · FastAPI · Flet</span>
+                  <span class="job-tag">PostgreSQL / Access</span>
+                  <span class="job-tag">Automatización administrativa</span>
+                  <span class="job-tag">Servidores Ubuntu · VPN</span>
+                </div>
+                <div class="job-details">
+                  <ul>
+                    <li>Desarrollo de bases de datos y herramientas en Python/Access para gestión de costos, compras, ventas y facturación.</li>
+                    <li>Automatización de circuitos administrativos, reduciendo tareas manuales y errores en procesos críticos.</li>
+                    <li>Despliegue de servicios en servidores Ubuntu y redes privadas (VPN) para acceso seguro a aplicaciones internas.</li>
+                    <li>Capacitación a personal administrativo y técnico en el uso de las herramientas desarrolladas.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="job" data-job data-collapsed="true">
+                <div class="job-header">
+                  <button class="job-toggle" type="button">
+                    <div class="job-title-row">
+                      <span class="job-chevron"></span>
+                      <span class="job-title">Profesor de Informática</span>
+                    </div>
+                    <div class="job-company">Colegio Santa Teresa de Jesús · Nivel primario</div>
+                  </button>
+                  <div class="job-meta">Mar 2023 – Actual</div>
+                </div>
+                <div class="job-tags">
+                  <span class="job-tag">Alfabetización digital</span>
+                  <span class="job-tag">Diseño de clases</span>
+                </div>
+                <div class="job-details">
+                  <ul>
+                    <li>Diseño y dictado del Taller de Informática (4.º a 6.º grado) con foco en pensamiento lógico, creatividad y uso responsable de tecnología.</li>
+                    <li>Integración de actividades con recursos digitales y nociones básicas de programación visual.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="job" data-job data-collapsed="true">
+                <div class="job-header">
+                  <button class="job-toggle" type="button">
+                    <div class="job-title-row">
+                      <span class="job-chevron"></span>
+                      <span class="job-title">Profesor de Física</span>
+                    </div>
+                    <div class="job-company">Colegio Almafuerte · Nivel secundario</div>
+                  </button>
+                  <div class="job-meta">Mar 2023 – Actual</div>
+                </div>
+                <div class="job-tags">
+                  <span class="job-tag">Física</span>
+                  <span class="job-tag">Ciencias naturales</span>
+                  <span class="job-tag">Experimentación</span>
+                </div>
+                <div class="job-details">
+                  <ul>
+                    <li>Docencia en 5.º y 6.º año (orientación Ciencias Naturales), uniendo teoría, práctica experimental y tecnologías actuales.</li>
+                    <li>Diseño de secuencias didácticas para que la física deje de ser una "caja negra" y se vuelva comprensible y aplicable.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="job" data-job data-collapsed="true">
+                <div class="job-header">
+                  <button class="job-toggle" type="button">
+                    <div class="job-title-row">
+                      <span class="job-chevron"></span>
+                      <span class="job-title">Profesor de Informática</span>
+                    </div>
+                    <div class="job-company">Instituto Argentino de Computación (IAC) · Sucursal Devoto</div>
+                  </button>
+                  <div class="job-meta">Mar 2012 – Actual</div>
+                </div>
+                <div class="job-tags">
+                  <span class="job-tag">Python</span>
+                  <span class="job-tag">AutoCAD</span>
+                  <span class="job-tag">MS Office</span>
+                  <span class="job-tag">Formación profesional</span>
+                </div>
+                <div class="job-details">
+                  <ul>
+                    <li>Docencia en AutoCAD, Operador de PC/Office y Programación en Python para jóvenes y adultos.</li>
+                    <li>Adaptación de contenidos a distintos niveles de entrada, con enfoque práctico y orientado a salida laboral.</li>
+                    <li>Diseño de materiales y guías que permiten a los estudiantes seguir aprendiendo de forma autónoma.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="job" data-job data-collapsed="true">
+                <div class="job-header">
+                  <button class="job-toggle" type="button">
+                    <div class="job-title-row">
+                      <span class="job-chevron"></span>
+                      <span class="job-title">Programador – Algoritmos financieros y datos de mercado</span>
+                    </div>
+                    <div class="job-company">Fernández Laya S.A.</div>
+                  </button>
+                  <div class="job-meta">Dic 2021 – Ene 2023 · Home office</div>
+                </div>
+                <div class="job-tags">
+                  <span class="job-tag">Python</span>
+                  <span class="job-tag">Excel avanzado</span>
+                  <span class="job-tag">Datos de mercado (Fix, ByMA)</span>
+                </div>
+                <div class="job-details">
+                  <ul>
+                    <li>Diseño de bases de datos y algoritmos para análisis de datos de mercado (Fix, ByMA).</li>
+                    <li>Desarrollo de planillas avanzadas de Excel para evaluar escenarios y asistir decisiones de trading.</li>
+                    <li>Capacitación del equipo en el uso de las herramientas desarrolladas.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="job" data-job data-collapsed="true">
+                <div class="job-header">
+                  <button class="job-toggle" type="button">
+                    <div class="job-title-row">
+                      <span class="job-chevron"></span>
+                      <span class="job-title">Encargado Administrativo – Sistemas internos</span>
+                    </div>
+                    <div class="job-company">Cristales Mitre S.A.</div>
+                  </button>
+                  <div class="job-meta">Ene 2014 – Dic 2021</div>
+                </div>
+                <div class="job-tags">
+                  <span class="job-tag">Costos y presupuestos</span>
+                  <span class="job-tag">Licitaciones</span>
+                  <span class="job-tag">Diseño de bases internas</span>
+                </div>
+                <div class="job-details">
+                  <ul>
+                    <li>Gestión integral de costos, presupuestos, licitaciones y facturación.</li>
+                    <li>Diseño y mantenimiento de planillas y bases de datos internas para seguimiento de operaciones.</li>
+                    <li>Articulación entre sector administrativo, operativo y dirección.</li>
+                  </ul>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- FORMACIÓN -->
+        <section id="formacion" class="glass-panel">
+          <div class="glass-inner">
+            <div class="section-title">Formación y capacitación</div>
+            <div class="section-body">
+              <div class="edu-grid">
+                <div>
+                  <div class="edu-item-title">Formación en Electrónica y Física aplicada</div>
+                  <div class="edu-inst">Trayectoria formal y autoformación continua</div>
+                  <div class="edu-meta">Base conceptual fuerte en análisis de circuitos, física clásica y moderna.</div>
+                </div>
+                <div>
+                  <div class="edu-item-title">Programación y desarrollo de sistemas</div>
+                  <div class="edu-inst">Cursos, proyectos propios y práctica profesional</div>
+                  <div class="edu-meta">Python, FastAPI, Flet, SQLAlchemy, HTML/CSS, manejo de Git y despliegue en Ubuntu.</div>
+                </div>
+                <div>
+                  <div class="edu-item-title">Docencia y divulgación</div>
+                  <div class="edu-inst">Experiencia en instituciones y talleres</div>
+                  <div class="edu-meta">Diseño curricular y materiales para ciencia, informática, AutoCAD e IA.</div>
+                </div>
+              </div>
+
+              <div class="course-list">
+                <div>· Cursos y talleres de actualización continua en Python, bases de datos, redes y seguridad básica.</div>
+                <div>· Formación permanente en didáctica de la ciencia y de la programación para adolescentes y personas adultas.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- IA & AUTOAPRENDIZAJE -->
+        <section id="ia" class="glass-panel ia-section">
+          <div class="glass-inner">
+            <div class="section-title">Ecosistema de IA &amp; aprendizaje autónomo</div>
+            <div class="section-body">
+              <p>
+                No uso la IA para reemplazar mi pensamiento, sino para <strong>expandirlo</strong>.
+                Trabajo con un ecosistema de modelos que actúan como un consejo de especialistas con miradas distintas.
+              </p>
+              <ul>
+                <li>
+                  Utilizo un entorno de
+                  <span class="term" data-tooltip="ChatGPT, Gemini, DeepSeek, Perplexity, Qwen, NotebookLM, entre otras.">IA generativa</span>
+                  y herramientas de análisis (ChatGPT, Codex, Gemini, DeepSeek, Perplexity, Qwen, NotebookLM, etc.)
+                  como <strong>copilotos especializados</strong> para desarrollo, investigación y docencia.
+                </li>
+                <li>
+                  <span class="term" data-tooltip="Diseño prompts, flujos de iteración, criterios de verificación cruzada y registros de decisiones.">
+                    Diseño prompts y flujos de trabajo
+                  </span>
+                  que combinan múltiples IA en modo "consejo": comparo respuestas, detecto sesgos y sintetizo soluciones
+                  robustas para programación, diseño de sistemas y divulgación científica.
+                </li>
+                <li>
+                  Desarrollo junto a IA soluciones de
+                  <span class="term" data-tooltip="FastAPI para APIs, Flet para interfaces, SQLAlchemy para modelos de datos.">frontend y backend</span>
+                  de calidad media-alta en Python, desplegadas en
+                  <span class="term" data-tooltip="Ubuntu Server, servicios systemd, acceso remoto por VPN, backup y mantenimiento.">servidores Ubuntu Server</span>
+                  y conectadas a
+                  <span class="term" data-tooltip="Diseño de esquemas, claves primarias/foráneas, índices y vistas para uso cotidiano.">PostgreSQL</span>,
+                  administradas con <span class="term" data-tooltip="Uso DBeaver como herramienta principal de consulta y diseño.">DBeaver</span>.
+                </li>
+                <li>
+                  Gestiono entornos remotos mediante
+                  <span class="term" data-tooltip="Tailscale y VPN para acceso seguro a servicios internos en distintas máquinas y redes.">VPN y redes privadas</span>,
+                  integrando cuando es útil servicios como Firebase o Google AI Studio.
+                </li>
+                <li>
+                  Aplico IA en
+                  <span class="term" data-tooltip="Producción de materiales, simulaciones, ejemplos y explicaciones graduadas para distintos niveles.">investigación y divulgación</span>
+                  en ciencia y tecnología: estructuro contenidos, verifico fuentes y preparo explicaciones claras para distintos niveles educativos.
+                </li>
+                <li>
+                  Mi crecimiento reciente en desarrollo full-stack, bases de datos e infraestructura
+                  se apoya en un proceso de
+                  <span class="term" data-tooltip="Uso proyectos reales, pruebas controladas y documentación propia como criterio para validar cada nueva herramienta que adopto."><strong>autoformación guiada por IA</strong></span>,
+                  con pruebas, prototipos y documentación propia como criterio de validación.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MODAL RADAR -->
+  <div class="modal-backdrop" id="radar-modal">
+    <div class="modal-card">
+      <button class="modal-close" type="button" id="radar-close" aria-label="Cerrar detalle de habilidades">×</button>
+      <div class="modal-title">Detalle del perfil híbrido</div>
+      <div class="modal-body">
+        <div>
+          <p>
+            El gráfico resume cómo se distribuye mi tiempo y mi foco:
+            el centro es la comunicación entre áreas, no una sola punta del polígono.
+          </p>
+          <p>
+            Puedo hablar con gerencia sobre costos, con desarrollo sobre arquitectura,
+            con docentes sobre contenidos y con técnicos sobre infraestructura, y
+            convertir esa conversación en sistemas y materiales concretos.
+          </p>
+        </div>
+        <div class="modal-radar">
+          <svg viewBox="0 0 240 240" aria-hidden="true">
+            <polygon class="radar-level"
+              points="120,96 142.8,112.6 134.1,139.4 105.9,139.4 97.2,112.6" />
+            <polygon class="radar-level"
+              points="120,72 165.7,105.2 148.2,158.8 91.8,158.8 74.3,105.2" />
+            <polygon class="radar-level"
+              points="120,48 188.5,97.8 162.3,178.2 77.7,178.2 51.5,97.8" />
+            <line class="radar-axis" x1="120" y1="120" x2="120" y2="40" />
+            <line class="radar-axis" x1="120" y1="120" x2="196.1" y2="95.3" />
+            <line class="radar-axis" x1="120" y1="120" x2="167" y2="184.7" />
+            <line class="radar-axis" x1="120" y1="120" x2="73" y2="184.7" />
+            <line class="radar-axis" x1="120" y1="120" x2="43.9" y2="95.3" />
+            <polygon class="radar-shape"
+              points="120,44 184.7,99 164.7,181.5 82.4,171.8 51.5,97.8" />
+            <text class="radar-label" x="120" y="28" text-anchor="middle">Dev &amp; Automación</text>
+            <text class="radar-label" x="207.5" y="92" text-anchor="start">Gestión</text>
+            <text class="radar-label" x="174.1" y="194" text-anchor="middle">Docencia</text>
+            <text class="radar-label" x="65.9" y="194" text-anchor="middle">Diseño técnico</text>
+            <text class="radar-label" x="32.5" y="92" text-anchor="end">Infra &amp; soporte</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Navegación superior
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        const section = document.getElementById(targetId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Timeline experiencia
+    document.querySelectorAll('[data-job]').forEach(job => {
+      const toggle = job.querySelector('.job-toggle');
+      toggle.addEventListener('click', () => {
+        const collapsed = job.getAttribute('data-collapsed') === 'true';
+        job.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
+      });
+    });
+
+    // Modal radar
+    const radarTrigger = document.getElementById('radar-trigger');
+    const radarModal = document.getElementById('radar-modal');
+    const radarClose = document.getElementById('radar-close');
+
+    radarTrigger.addEventListener('click', () => {
+      radarModal.classList.add('open');
+    });
+
+    radarClose.addEventListener('click', () => {
+      radarModal.classList.remove('open');
+    });
+
+    radarModal.addEventListener('click', (ev) => {
+      if (ev.target === radarModal) {
+        radarModal.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
