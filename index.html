@@ -164,6 +164,7 @@
       color: var(--text-main);
       text-decoration: none;
       white-space: nowrap;
+      animation: breathe 2.8s ease-in-out infinite;
     }
 
     .download-btn:hover {
@@ -495,7 +496,9 @@
     /* TERMINOS CON TOOLTIP */
     .term {
       position: relative;
-      border-bottom: 1px dotted rgba(234,88,12,0.7);
+      border-bottom: none;
+      text-decoration: underline dotted rgba(234,88,12,0.6);
+      text-underline-offset: 2px;
       cursor: help;
     }
 
@@ -519,6 +522,12 @@
       box-shadow: 0 18px 40px rgba(0,0,0,0.8);
       z-index: 20;
       transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+    }
+
+    @keyframes breathe {
+      0% { box-shadow: 0 0 0 0 rgba(234,88,12,0.45); transform: scale(1); }
+      50% { box-shadow: 0 0 0 8px rgba(234,88,12,0.12); transform: scale(1.02); }
+      100% { box-shadow: 0 0 0 0 rgba(234,88,12,0.08); transform: scale(1); }
     }
 
 
